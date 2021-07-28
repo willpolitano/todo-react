@@ -1,0 +1,27 @@
+React é uma biblioteca para criar intefaces, baseada em componentes, onde cada componente é uma função javascript.
+
+
+Componente
+    Não pode passar varios elementos, quando houver a necessidade de fazer isso, devemos usar: <></>
+
+
+Vantagens
+	Reusabilidade
+	Otimo trabalho em equipe
+
+
+Facebook é o criador do react
+
+
+UseState - usado para alterar o estado do componente
+
+
+Props - dados que são passados de um componente pai para um componente filho
+
+
+Componente pai é o que esta renderizando o outro
+
+
+A class das tags htmls são chamadas de className
+
+Npm - pacote gerenciador do node js

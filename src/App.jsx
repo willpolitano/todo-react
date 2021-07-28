@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import {v4 as uuidv4} from 'uuid';
+import { BrowserRouter as Router} from 'react-router-dom';
 
+import Header from './Components/Header';
 import Tasks from './Components/Tasks';
 import AddTask from './Components/AddTask';
 
@@ -18,15 +21,42 @@ const App = () => {
       title: 'Ler livro',
       completed: true
     }
-  ])
+  ]);
+
+  const handleTaskClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if(task.id == taskId) return {... task, completed: !task.completed}
+
+      return task;
+    });
+
+    setTasks(newTasks)
+  };
+
+  const handleTaskAddition = (taskTitle) => {
+    const newTasks = [... tasks, {
+      title: taskTitle,
+      id: uuidv4(),
+      completed: false
+    }]
+
+    setTasks(newTasks)
+  } 
+
+  const handleTaskDeletion = (taskId) => {
+    const newTasks = tasks.filter((task) => task.id != taskId)
+    
+    setTasks(newTasks)
+  }
 
   return (
-    <>
+    <Router>
       <div className="container">
-        <AddTask />
-        <Tasks tasks={tasks}/>
+        <Header />
+        <AddTask handleTaskAddition={handleTaskAddition} />
+        <Tasks tasks={tasks} handleTaskClick={handleTaskClick} handleTaskDeletion={handleTaskDeletion}/>
       </div>
-    </>
+    </ Router>
   )
 };
 
